@@ -9,7 +9,8 @@ app.use(express.urlencoded({ extended: true }));
 const __dirname = path.resolve();
 
 app.get('*', (req, res) =>
-  res.send('finally got there! yeahaey!!')
+//   res.send('finally got there! yeahaey!!')
+        return res.redirect('https://instagram.com/shravya__sharanya?igshid=YmMyMTA2M2Y=')
 );
 
 app.use((err, req, res, next) => {

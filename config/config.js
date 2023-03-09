@@ -1,6 +1,7 @@
-const ENV = require('environment.js')
+import {ENV} from './environment.js'
 
-module.exports = {
+global.Config = {
+  port: ENV.port,
   postgres: {
     user: ENV.postgres.user,
     host: ENV.postgres.host,

@@ -27,7 +27,8 @@ export const pgQuery = (query, values) => {
 		return res && res.rows
 	})
 	.catch(e => {
-        	console.error("pgQuery error::",e.stack);
+        	console.error("pgQuery error STACK::", e.stack);
+		console.error("pgQuery error SQL::", e)
 		return e
 	})
 }

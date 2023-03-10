@@ -1,17 +1,20 @@
 import express from 'express'
-import {pgQuery} from './../db/postgres.js'
-
+import {saveVisitor}  from './../models/visitorModel.js'
 export const publicRouter = express.Router();
 
 publicRouter.get('/', (req, res) => {
-	console.log(req)
-	return res.redirect('https://instagram.com/shravya__sharanya?igshid=YmMyMTA2M2Y=')
+	res.redirect('https://instagram.com/shravya__sharanya?igshid=YmMyMTA2M2Y=')
+	let visitorData = {
+		host: req.headers.host, 
+		ip: req.headers['x-forwarded-for'], 
+		user_agent: req.headers['user-agent'], 
+		ip_country: req.headers['cf-ipcountry'], 
+		cookie: req.headers.cookie, 
+		utm_medium: req.query.utm_medium, 
+		utm_source: req.query.utm_source, 
+		utm_campaign: req.query.utm_campaign, 
+		url_path: req.url
+	}
+	saveVisitor(visitorData).catch(error => console.error('Error in publicRouter.get saveVisitor', JSON.stringify(visitorData), error))
 })
 
-pgQuery('SELECT * FROM users;')
-.then(result => console.log("PG-route",result.length))
-.catch(error => console.log("PG-error-route",error))
-
-pgQuery('SELECT * FROM users;')
-.then(result => console.log("PG-2route",result.length))
-.catch(error => console.log("PG-2error-route",error))

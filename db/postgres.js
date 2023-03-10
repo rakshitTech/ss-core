@@ -7,38 +7,30 @@ let pool = new Pool({
   database: global.Config.postgres.db,
   password: global.Config.postgres.pass,
   port: global.Config.postgres.port,
-  idleTimeoutMillis: 0,
-  connectionTimeoutMillis: 0, 
+  idleTimeoutMillis: 10000,
+  connectionTimeoutMillis: 10000, 
   max: 30,
   ssl: { rejectUnauthorized: false }
 })
 
-/*
-const pgClient = null;
-pool.connect()
-.then(client => {
-	pgClient = client;
-})
-*/
+//pool.on('connect', () => {
+//  console.log('Postgres successfully connected');
+//});
 
-pool.on('connect', () => {
-  console.log('Postgres successfully connected');
-});
-
-pool.on('error', () => {
-  console.error('PG Error');
+pool.on('error', error => {
+  console.error('PG Error', error);
 });
 
 export const pgQuery = (query, values) => {
 	return pool.query(query, values)
 	.then(res => {
-        	//pgClient.release();
-	        //console.log(res.rows[0]);
 		return res && res.rows
 	})
 	.catch(e => {
-	        //pgClient.release();
         	console.error("pgQuery error::",e.stack);
 		return e
 	})
 }
+
+pgQuery('SELECT 1').then(()=>console.log('Postgres connected successfully')).catch(error => console.error('Unable to connect Postgres', error))
+

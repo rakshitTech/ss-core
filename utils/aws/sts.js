@@ -21,13 +21,12 @@ export const stsAssumeRole = async () => {
 		global.Config.aws.session = {
 			access_key_id: data.Credentials.AccessKeyId,
 			secret_access_key: data.Credentials.SecretAccessKey,
+			region: global.Config.aws.region,
 			token: data.Credentials.SessionToken,
 			expiration: data.Credentials.Expiration
 		}
-	  console.log('process data.', data)
+		console.log('Assumed Role')
 	} catch (error) {
 	  console.error('error handling.', error)
-	} finally {
-	  console.log('finally.')
 	}
 }

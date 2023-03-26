@@ -4,7 +4,7 @@ export const saveVisitor = (visitorData) => {
 		visitorData.utm_medium, visitorData.utm_source, visitorData.utm_campaign, visitorData.url_path] 
 
         values.forEach((d,i) => values[i] = (d || '').toString())
-        return global.Config.pgQuery(sql, values)
+        return global.Config.pg_query(sql, values)
 		.then(result => {
 			return result
 		})

@@ -5,6 +5,19 @@ export const ENV = {
 		host: "xxxx",
 		port: "xxxx",
 		db: "xxxx",
-		pass: "xxxx"
-	}
+		pass: "xxxx",
+		pg_query: () => {}
+	},
+        aws: {
+                access_key_id: "xxxx",
+                secret_access_key: "xxxx",
+                region: "xxxx",
+                assume_role_arn: "xxxx",
+                session: {
+                        access_key_id: '',
+                        secret_access_key: '',
+                        token: '',
+                        expiration: ''
+                }
+        }
 }

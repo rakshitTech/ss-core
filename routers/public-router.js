@@ -1,5 +1,5 @@
 import express from 'express'
-import {saveVisitor}  from './../models/visitorModel.js'
+import {saveVisitor}  from './../models/visitor-model.js'
 export const publicRouter = express.Router();
 
 publicRouter.get('/', (req, res) => {

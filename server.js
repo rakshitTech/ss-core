@@ -2,9 +2,9 @@ import './config/config.js'
 import http from 'http'
 import express from 'express'
 import path from 'path'
-import {logRequest, logApiError} from './utils/api_middleware.js'
+import {logRequest, logApiError} from './utils/middlewares/api-console-log.js'
 import {pgQuery} from './utils/db/postgres.js'
-import {publicRouter} from './routers/publicRouter.js'
+import {publicRouter} from './routers/public-router.js'
 
 const app = express()
 app.use(express.json())

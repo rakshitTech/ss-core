@@ -17,7 +17,7 @@ CREATE TABLE products
 	updated_at timestamp default current_timestamp
 );
 
-CREATE TABLE product_categories_mapping (
+CREATE TABLE product_category_mapping (
 	id serial PRIMARY KEY,
 	product_id int REFERENCES products,
 	category_id int REFERENCES categories,

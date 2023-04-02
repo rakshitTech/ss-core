@@ -1,7 +1,7 @@
 CREATE TABLE categories (
 	id serial PRIMARY KEY,
 	category varchar(50),
-	parent_category varchar(50) DEFAULT NULL,
+	parent_category int DEFAULT NULL REFERENCES categories,
 	created_at timestamp default current_timestamp
 )
 

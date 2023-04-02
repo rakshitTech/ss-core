@@ -1,9 +1,9 @@
 CREATE TABLE categories (
 	id serial PRIMARY KEY,
 	category varchar(50),
-	parent_category int DEFAULT NULL REFERENCES categories,
 	created_at timestamp default current_timestamp
-)
+);
+ALTER TABLE categories ADD COLUMN parent_category int DEFAULT NULL REFERENCES categories;
 
 CREATE TABLE products 
 (

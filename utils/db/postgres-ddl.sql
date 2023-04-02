@@ -12,7 +12,6 @@ CREATE TABLE products
 	description text,
 	max_price int,
 	selling_price int,
-	images text[],
 	star_rating float DEFAULT NULL,
 	created_at timestamp default current_timestamp,
 	updated_at timestamp default current_timestamp
